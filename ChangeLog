@@ -1,3 +1,8 @@
+v0.5.5
+   - Documentation update: running ctronome with pulseaudio (modern Ubuntu distributions etc)
+     and some minor documentation touch-ups.
+     NO change to the ctronome code, so no need to recompile and reinstall.
+
 v0.5.4
    - fixed amd64 platform bug that caused ctronome to produce no sound on amd64 platform
      due to incorrect width of integers used in bitwise operations, thanks to Dmitry Kazarov

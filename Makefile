@@ -1,4 +1,4 @@
-VERSION = 0.5.4
+VERSION = 0.5.5
 CC = gcc
 OBJS = ctronome.o dsp.o routines.o
 

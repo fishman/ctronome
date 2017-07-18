@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 #define MYNAME "ctronome"
-#define VERSION "0.5.4"
+#define VERSION "0.5.5"
 #define CREDITS "homepage: http://ctronome.kign.org/\n"
 
 /* set up these three variables to your system */
