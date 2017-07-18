@@ -1,0 +1,8 @@
+Timing. There is no timing at all. ctronome just builds an audio sample
+which is the correct lenght for the given BPM. The result is that it eats up
+more system resource by constantly writing audio stream to /dev/dsp.
+Not too much but still, its not efficient.
+
+I also assume that the soundcard driver blocks the program
+if the dsp buffer is full. If it does not, well, its a problem.
+

@@ -1,0 +1,6 @@
+TODO list:
+
+ - recognize WAV format and set up /dev/dsp accordingly
+ - programmable metronome
+ - runtime-adjustable bpm and bpt via keyboard
+

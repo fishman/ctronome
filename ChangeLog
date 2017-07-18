@@ -1,0 +1,5 @@
+v0.1 first version. supports:
+     30 < beat per minute < 250
+     1 < beat per tact < 50 
+     44100Hz 16bit mono WAV sound via /dev/dsp
+
