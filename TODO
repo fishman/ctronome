@@ -5,6 +5,3 @@ TODO list:
  - 'tap-in' bpm via keyboard
  - adjustable program speed via commandline
 
- + recognize WAV format and set up /dev/dsp accordingly
- + programmable metronome
-

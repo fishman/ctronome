@@ -226,7 +226,7 @@ void parm_init(int argc,char *argv[]){
   if ((strcmp(argv[i], "-c") == 0) && (i + 1 < argc)){
    pcount = atoi(argv[++i]);
    pdecrease = 1;
-   if (debug) printf("debug: count: '%s'\n",pcount);
+   if (debug) printf("debug: count: '%d'\n",pcount);
   }
 
   /* program file */

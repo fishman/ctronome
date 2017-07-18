@@ -1,4 +1,4 @@
-ctronome v0.5.3
+ctronome v0.5.4
 
 GNU/GPL copying rules apply, see COPYING
 
@@ -12,7 +12,7 @@ DISCLAIMER:
 INTRODUCTION:
  Ctronome is a very-very simple programmable metronome for Linux console,
  with /dev/dsp audio output. BPM ranges from 30 to 250, tacts like 3/4, 7/8
- etc. are possible. It Uses plays external WAV files, so one could use custom
+ etc. are possible. It plays external WAV files, so one could use custom
  sound samples.
 
  Aim is to keep it as simple as it can be so dummies like me may understand
@@ -91,6 +91,8 @@ CREDITS:
 
  Patch to eliminate warnings with Gcc4, and included WAV samples digitally
  remastered to be more pronounced and precise by Martin Tarenskeen.
+
+ Patch to fix amd64 platform bug by Dmitry Kazarov
 
  and help from my friends: Zola & Arpy.
 

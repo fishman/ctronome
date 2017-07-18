@@ -1,3 +1,8 @@
+v0.5.4
+   - fixed amd64 platform bug that caused ctronome to produce no sound on amd64 platform
+     due to incorrect width of integers used in bitwise operations, thanks to Dmitry Kazarov
+     http://www.freebsd.org/cgi/query-pr.cgi?pr=ports/170207
+
 v0.5.3
    - added #include <stdlib.h> to routines.c also. Silly me, forgot to
      do that. Again, thanks to Martin for letting me know.

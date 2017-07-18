@@ -1,6 +1,8 @@
-#include <linux/soundcard.h>
+#include <sys/soundcard.h>
+#include <stdint.h>
+
 #define MYNAME "ctronome"
-#define VERSION "0.5.3"
+#define VERSION "0.5.4"
 #define CREDITS "homepage: http://ctronome.kign.org/\n"
 
 /* set up these three variables to your system */
@@ -28,9 +30,9 @@ char *programfile;
            for defaults/limits and required WAV format see README\n"
 
 /* my lazy type definitions */
-typedef unsigned long int DWORD;
-typedef unsigned short int WORD;
-typedef unsigned char BYTE;
+typedef uint32_t DWORD;
+typedef uint16_t WORD;
+typedef uint8_t BYTE;
 typedef DWORD dword;
 typedef WORD word;
 typedef BYTE byte;
