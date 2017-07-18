@@ -1,3 +1,8 @@
+v0.5.6
+   - fixed compile-time warning in dsp.c:
+	dsp.c:51:2: warning: too many arguments for format [-Wformat-extra-args]
+   - minor documentation improvements
+
 v0.5.5
    - Documentation update: running ctronome with pulseaudio (modern Ubuntu distributions etc)
      and some minor documentation touch-ups.

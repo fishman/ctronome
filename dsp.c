@@ -48,7 +48,7 @@ int dsp_init(byte *dsp_dev,word bitspersample, word channels, dword samplerate){
   perror(dsp_dev);
   exit (1);
  }
- if (debug) printf ("debug: dsp opened successfully\n",dsp_dev);
+ if (debug) printf ("debug: dsp device %s opened successfully\n",dsp_dev);
 
  if (debug){
   if (ioctl(dsp_handle, SNDCTL_DSP_GETFMTS, &supported_dsp_formats) == -1){
