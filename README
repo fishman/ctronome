@@ -1,4 +1,4 @@
-ctronome v0.3
+ctronome v0.4
 
 GNU/GPL copying rules apply, see COPYING
 
@@ -46,6 +46,7 @@ RUNNING:
                          default: /usr/share/ctronome/metronome2.wav
     -d <device>         dsp device, default /dev/dsp
     -h                  display help screen
+    -debug              display debug messages
 
    See prog_example.txt to learn how to program ctronome.
 
@@ -68,6 +69,8 @@ RUNNING:
    be *khm* interesting, as no check is made for correct WAV format yet.
 
 CREDITS:
- dsp code is based on gTick by Alex Roberts <bse@dial.pipex.com>
+ dsp code is based on gTick by Alex Roberts <bse@dial.pipex.com>,
+          and also the OSS Programmers Guide
+
  and a little help from Arpad Gereoffy.
 

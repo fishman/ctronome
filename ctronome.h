@@ -1,6 +1,6 @@
 #include <linux/soundcard.h>
 #define MYNAME "ctronome"
-#define VERSION "0.3"
+#define VERSION "0.4"
 #define CREDITS "homepage: http://ctronome.kign.org/\n"
 
 /* set up these three variables to your system */
@@ -32,8 +32,8 @@ typedef DWORD dword;
 typedef WORD word;
 typedef BYTE byte;
 
-static int dsp_rate = 44100; /* samples per second, Hz */
-static int dsp_channels = 0; /* 0 = mono, 1 = stereo */
+static int dsp_speed = 44100; /* samples per second, Hz */
+static int dsp_channels = 1; /* 1 = mono, 2 = stereo */
 static int dsp_depth = 2; /* bytes per sample */
 static int dsp_format = AFMT_S16_LE; /* signed 16 bit little endianess*/
 
@@ -53,3 +53,4 @@ void parm_init(int, char *[]);
 void dsp_close(byte);
 void dsp_write(byte, byte *, dword);
 
+byte debug;

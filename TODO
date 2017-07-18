@@ -5,5 +5,7 @@ TODO list:
  - /dev/dsp timer readback
  - runtime-adjustable bpm and bpt via keyboard
  - 'tap-in' bpm via keyboard
+ - program via commandline
 
  + programmable metronome
+

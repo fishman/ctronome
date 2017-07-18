@@ -38,10 +38,10 @@ int main(int argc,char *argv[]){
    if (is_program) printf("count: %d, bpm: %d/%d, bpt: %d/%d\n",count,bpm[0],bpm[1],bpt[0],bpt[1]);
 
    /* lets calculate the appropriate pattern length for our bpm and bpt */
-   bpm_base_length = dsp_rate * dsp_depth * (dsp_channels + 1) * 60 / bpm[0];
+   bpm_base_length = dsp_speed * dsp_depth * dsp_channels * 60 / bpm[0];
    dsp_pattern_length = bpm_base_length * bpm[1] / bpt[1];
 
-   while(i3 = dsp_pattern_length % (dsp_depth * (dsp_channels + 1))){
+   while(i3 = dsp_pattern_length % (dsp_depth * dsp_channels + 1)){
     dsp_pattern_length++;
    }
   
@@ -113,6 +113,16 @@ void parm_init(int argc,char *argv[]){
  /* first, get the parameters */
  int i;
  dword bytes_read;
+
+ debug = 0;
+ for (i = 1; i < argc; i++){
+  /* debug */
+  if ((strcmp(argv[i], "-debug") == 0) ||
+      (strcmp(argv[i], "--debug") == 0)) {
+   printf("debug mode\n");
+   debug = 1;
+  }
+ }
  
  for (i = 1; i < argc; i++){
   /* help */
@@ -133,16 +143,22 @@ void parm_init(int argc,char *argv[]){
   }
 
   /* wav1 */
-  if ((strcmp(argv[i], "-w1") == 0) && (i + 1 < argc))
+  if ((strcmp(argv[i], "-w1") == 0) && (i + 1 < argc)){
    metronomewav1 = argv[++i];
+   if (debug) printf("debug: wav1: '%s'\n",metronomewav1);
+  }
 
   /* wav2 */
-  if ((strcmp(argv[i], "-w2") == 0) && (i + 1 < argc))
+  if ((strcmp(argv[i], "-w2") == 0) && (i + 1 < argc)){
    metronomewav2 = argv[++i];
+   if (debug) printf("debug: wav2: '%s'\n",metronomewav2);
+  }
 
   /* dsp device */
-  if ((strcmp(argv[i], "-d") == 0) && (i + 1 < argc))
+  if ((strcmp(argv[i], "-d") == 0) && (i + 1 < argc)){
    dspdev = argv[++i];
+   if (debug) printf("debug: dsp: '%s'\n",dspdev);
+  }
 
   /* bpt */
   if ( (strcmp(argv[i], "-t") == 0) && (i + 1 < argc)){
@@ -154,6 +170,7 @@ void parm_init(int argc,char *argv[]){
    if (bpt[1] < 1) bpt[1] = 1;
    if (bpt[1] > 50) bpt[1] = 50;
    bpm[1] = bpt[1];
+   if (debug) printf("debug: bpt: '%s'\n",bpt);
   }
 
   /* bpm */
@@ -165,21 +182,25 @@ void parm_init(int argc,char *argv[]){
    if (bpm[0] < 30) bpm[0] = 30;
    if (bpm[1] > 50) bpm[1] = 50;
    if (bpm[1] < 1) bpm[1] = 1;
+   if (debug) printf("debug: bpm: '%s'\n",bpm);
   }
 
   /* pcount */
   if ((strcmp(argv[i], "-c") == 0) && (i + 1 < argc)){
    pcount = atoi(argv[++i]);
    pdecrease = 1;
+   if (debug) printf("debug: count: '%s'\n",pcount);
   }
 
   /* program file */
   if ((strcmp(argv[i], "-p") == 0) && (i + 1 < argc)){
    programfile = argv[++i];
    is_program = 1;
+   if (debug) printf("debug: program: '%s'\n",programfile);
   }
  }
 
+ if (debug) printf("debug: calling dsp_init(%s)\n",dspdev);
  dsp_device = dsp_init(dspdev);
 
  /* cleanup buffers */
