@@ -1,6 +1,9 @@
 TODO list:
 
  - recognize WAV format and set up /dev/dsp accordingly
- - programmable metronome
+ - output to WAV file
+ - /dev/dsp timer readback
  - runtime-adjustable bpm and bpt via keyboard
+ - 'tap-in' bpm via keyboard
 
+ + programmable metronome

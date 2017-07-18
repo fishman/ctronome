@@ -1,10 +1,10 @@
-VERSION = 0.0.1
+VERSION = 0.2
 CC = gcc
-OBJS = ctronome.o dsp.o
+OBJS = ctronome.o dsp.o routines.o
 
 all: ctronome
 
-%.o: %.c ctronome.h
+%.o: %.c ctronome.h routines.h
 	$(CC) -c $<
 
 ctronome: $(OBJS)

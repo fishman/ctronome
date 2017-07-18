@@ -6,3 +6,5 @@ Not too much but still, its not efficient.
 I also assume that the soundcard driver blocks the program
 if the dsp buffer is full. If it does not, well, its a problem.
 
+The format of the program file is not strictly checked, however I do
+not expect ctronome to segfault on a badly formed program.
