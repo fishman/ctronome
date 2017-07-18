@@ -1,4 +1,4 @@
-ctronome v0.5.2
+ctronome v0.5.3
 
 GNU/GPL copying rules apply, see COPYING
 
@@ -7,7 +7,7 @@ DISCLAIMER:
  THIS PROGRAM SAFE TO USE, MISTAKE HAPPENS. USE IT AT YOUR OWN RISK.
 
  THE AUTHOR DOES NOT TAKE ANY RESPONSIBILITY FOR WHAT THIS SOFTWARE
- DOES TO YOUR PC. BACKUP FREQENTLY.
+ DOES TO YOUR PC. BACKUP FREQUENTLY.
 
 INTRODUCTION:
  Ctronome is a very-very simple programmable metronome for Linux console,
@@ -89,8 +89,8 @@ CREDITS:
  dsp code is based on gTick by Alex Roberts <bse@dial.pipex.com>,
           and also the OSS Programmers Guide
 
- included WAV samples digitally remastered by Martin Tarenskeen
- to be more pronounced and precise.
+ Patch to eliminate warnings with Gcc4, and included WAV samples digitally
+ remastered to be more pronounced and precise by Martin Tarenskeen.
 
  and help from my friends: Zola & Arpy.
 

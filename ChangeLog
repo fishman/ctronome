@@ -1,3 +1,7 @@
+v0.5.3
+   - added #include <stdlib.h> to routines.c also. Silly me, forgot to
+     do that. Again, thanks to Martin for letting me know.
+
 v0.5.2
    - included WAV samples digitally remastered by Martin Tarenskeen
      to be more pronounced and precise.
