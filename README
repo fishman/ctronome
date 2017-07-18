@@ -1,4 +1,4 @@
-ctronome v0.5
+ctronome v0.5.1
 
 GNU/GPL copying rules apply, see COPYING
 
@@ -48,7 +48,7 @@ INSTALLATION:
 RUNNING:
  ctronome -b <bpm> -t <bpt> -c <count> -w1 <wav1> -w2 <wav2> -d <dsp_device> \
           -p <program> -h -v
-    -b <bpm>            beat per minute default: 60/4, range: 30-250/1-50
+    -b <bpm>            beat per minute default: 60/4, range: 30-250/1-20
     -t <bpt>            beat per tact default: 1/4, range: 1-50/1-50
     -p <filename>       program file
     -c <count>          play tact/program <count> times then exit

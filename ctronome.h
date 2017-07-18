@@ -1,12 +1,15 @@
 #include <linux/soundcard.h>
 #define MYNAME "ctronome"
-#define VERSION "0.5"
+#define VERSION "0.5.1"
 #define CREDITS "homepage: http://ctronome.kign.org/\n"
 
 /* set up these three variables to your system */
 static char *metronomewav1 = "/usr/share/ctronome/metronome1.wav\0";
 static char *metronomewav2 = "/usr/share/ctronome/metronome2.wav\0";
 static char *dspdev = "/dev/dsp\0";
+
+/* means: 1/4, 1/8 etc. */
+static int default_base_note = 4;
 
 char *programfile;
 

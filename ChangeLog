@@ -1,3 +1,7 @@
+v0.5.1
+   - new parameter processing bug introduced in v0.5 fixed
+   - some old bugs are fixed around parameter and program processing
+
 v0.5
    - WAV format is detected, and DSP is set up accordingly
    - included 2 channel (stereo) wav format for those sound
