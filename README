@@ -1,4 +1,4 @@
-ctronome v0.5.1
+ctronome v0.5.2
 
 GNU/GPL copying rules apply, see COPYING
 
@@ -88,6 +88,9 @@ SEND BUGREPORTS TO:
 CREDITS:
  dsp code is based on gTick by Alex Roberts <bse@dial.pipex.com>,
           and also the OSS Programmers Guide
+
+ included WAV samples digitally remastered by Martin Tarenskeen
+ to be more pronounced and precise.
 
  and help from my friends: Zola & Arpy.
 

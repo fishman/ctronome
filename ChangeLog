@@ -1,3 +1,9 @@
+v0.5.2
+   - included WAV samples digitally remastered by Martin Tarenskeen
+     to be more pronounced and precise.
+   - added #include <stdlib.h> to ctronome.c to eliminate compile-time
+     warnings with newer (>4) GCC versions
+
 v0.5.1
    - new parameter processing bug introduced in v0.5 fixed
    - some old bugs are fixed around parameter and program processing
