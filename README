@@ -1,12 +1,19 @@
-ctronome v0.4
+ctronome v0.5
 
 GNU/GPL copying rules apply, see COPYING
 
+DISCLAIMER:
+ THIS SOFTWARE COMES AS-IS. ALTHOUGH THE AUTHOR DOES ITS BEST TO MAKE
+ THIS PROGRAM SAFE TO USE, MISTAKE HAPPENS. USE IT AT YOUR OWN RISK.
+
+ THE AUTHOR DOES NOT TAKE ANY RESPONSIBILITY FOR WHAT THIS SOFTWARE
+ DOES TO YOUR PC. BACKUP FREQENTLY.
+
 INTRODUCTION:
- ctronome is a very-very simple programmable console metronome for Linux
+ Ctronome is a very-very simple programmable metronome for Linux console,
  with /dev/dsp audio output. BPM ranges from 30 to 250, tacts like 3/4, 7/8
- etc. are possible. Uses external WAV files, so its sound is easily adjustable
- to meet your taste.
+ etc. are possible. It Uses plays external WAV files, so one could use custom
+ sound samples.
 
  Aim is to keep it as simple as it can be so dummies like me may understand
  and modify it. (The source code looks ugly though;)
@@ -20,18 +27,23 @@ COMPILE-TIME CONFIGURATION:
  They speak for themselves.
  
 COMPILATION:
- I tried to make ctronome as simple as possible. Only the very basic
- libraries are needed that I believe to exist on every libc based
- Linuxes. You need to have Linux kernel header files installed.
+ Only the very basic C libraries are needed that I believe to exist
+ on virtally all Linuxes. You need to have Linux kernel header
+ files installed (they come with the Linux kernel source), and OSS
+ (or OSS compatible) soundcard support.
 
  Go into ctronome source directory and type 'make'.
  It should compile whithout errors.
 
 INSTALLATION:
- It is not really an issue as ctronome is a single binary. You can put it
- anywhere you want. You will need two preferably short WAV files as
- metronome sample, put in the place you specified in ctronome.h
- Two sample WAVs are included (recorded from a real metronome ;).
+ Ctronome is a single binary. You can put it anywhere you want in
+ your local or remote filesystem. You need two, preferably short
+ WAV files as metronome sample, put in the place you specified in
+ ctronome.h, or specified on the command line.
+
+ There are two one-channel and two two-channel (both channels are the same)
+ included, recorded from a real metronome. You have to install the one that
+ fits your sound system (see NOTES)
 
 RUNNING:
  ctronome -b <bpm> -t <bpt> -c <count> -w1 <wav1> -w2 <wav2> -d <dsp_device> \
@@ -63,14 +75,19 @@ RUNNING:
 
    If the base note for BPM is not specified, it defaults to the base note
    of the tact.
-   
-   required WAV format is 16bit mono 44100Hz litte endian byte ordering.
-   If you specify anything other than that, the metronome sound will
-   be *khm* interesting, as no check is made for correct WAV format yet.
+
+   It requires two 16 bit per sample WAV format, mono or stereo, and preferably
+   at least 44100Hz sample rate. *The two WAV formats must be the same!*
+   Please note that if your sound system does not support the exact format
+   provided by the WAV files, it will try its best to play it anyway, but
+   the result will be unpredictable. Debug mode will tell you the details.
+
+SEND BUGREPORTS TO:
+   ctronome at kign dot org
 
 CREDITS:
  dsp code is based on gTick by Alex Roberts <bse@dial.pipex.com>,
           and also the OSS Programmers Guide
 
- and a little help from Arpad Gereoffy.
+ and help from my friends: Zola & Arpy.
 

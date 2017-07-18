@@ -1,3 +1,10 @@
+v0.5
+   - WAV format is detected, and DSP is set up accordingly
+   - included 2 channel (stereo) wav format for those sound
+     systems that do not support mono mode (see NOTES/README)
+   - bugfix in parameter processing that caused bpm base note
+     to be ignored
+
 v0.4
    - dsp.c code cleanup, according to OSS Programmers Guide.
    - implemented some debug messages, mainly for DSP procedures

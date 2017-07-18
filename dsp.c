@@ -6,10 +6,41 @@
 #include <linux/soundcard.h>
 #include "ctronome.h"
 
+static int dsp_8bit_unsigned_format = AFMT_U8; /* 0x00000008 unsigned 8 bit*/
+static int dsp_16bit_signed_format = AFMT_S16_LE; /* 0x00000010 signed 16 bit little endianess*/
+
 static int debug_dsp_speed, debug_dsp_channels, debug_dsp_depth, supported_dsp_formats;
 
-int dsp_init(byte *dsp_dev){
+int dsp_init(byte *dsp_dev,word bitspersample, word channels, dword samplerate){
  int dsp_handle;
+
+ dsp_format = 0;
+ if (debug) printf ("debug: dsp.c: bitspersample: >%d<\n",bitspersample);
+ /* check parameters */
+ if (bitspersample == 8)
+  dsp_format = dsp_8bit_unsigned_format;
+ if (bitspersample == 16){
+  dsp_format = dsp_16bit_signed_format;
+ }
+
+ if(!(dsp_format)){
+  printf ("FATAL: only 8 and 16 bits per sample are supported. (got: %d\n",bitspersample);
+  exit (1);
+ }
+ if (debug) printf ("debug: dsp.c: wanted AFMT: >%d<\n",dsp_format);
+
+ if ((channels < 1) && (channels > 2)){
+  printf ("FATAL: number of channels must be 1 (mono) or 2 (stereo) (got: %d\n",channels);
+  exit (1);
+ }
+ dsp_channels = channels;
+
+ if ((samplerate < 8000) && (samplerate > 96000)){
+  printf ("FATAL: samplerate must be between 8000 and 96000 (got: %d\n",samplerate);
+  exit (1);
+ }
+ dsp_speed = samplerate;
+
  /* Initialise dsp_dev */
  if (debug) printf ("debug: opening dsp '%s'\n",dsp_dev);
  if ((dsp_handle = open (dsp_dev, O_WRONLY)) == -1){
@@ -18,11 +49,6 @@ int dsp_init(byte *dsp_dev){
   exit (1);
  }
  if (debug) printf ("debug: dsp opened successfully\n",dsp_dev);
-
- /* Set up Output format */
- if (debug) printf ("debug: dsp_depth: '%d'\n",dsp_depth);
- if (dsp_depth == 1)
-  dsp_format == AFMT_S8;
 
  if (debug){
   if (ioctl(dsp_handle, SNDCTL_DSP_GETFMTS, &supported_dsp_formats) == -1){
@@ -41,8 +67,13 @@ int dsp_init(byte *dsp_dev){
  }
 
  if (debug) printf ("debug: dsp: set format returned '%d'\n",dsp_format);
- if (dsp_format != AFMT_S16_LE){
-  printf("FATAL: your dsp device does not support signed 16 bit little endian (AFMT_S16_LE) format\n");
+ if ((bitspersample == 8) && (dsp_format != dsp_8bit_unsigned_format)){
+  printf("FATAL: your dsp device does not seem to support unsigned 8 bit (AFMT_8U) format\n");
+  exit(1);
+ }
+
+ if ((bitspersample == 16) && (dsp_format != dsp_16bit_signed_format)){
+  printf("FATAL: your dsp device does not seem to support signed 16 bit (AFMT_S16_LE) format\n");
   exit(1);
  }
 
@@ -56,8 +87,8 @@ int dsp_init(byte *dsp_dev){
  }
 
  if (debug) printf ("debug: dsp: set no. of channels returned '%d'\n",dsp_channels);
- if (dsp_channels != 1){
-  printf ("FATAL: strange... seems like your dps doesnt support mono mode.\n");
+ if (dsp_channels != channels){
+  printf ("FATAL: your wav has %d channels, while your DSP only supports %d channels.\n",channels,dsp_channels);
   exit(1);
  }
 
@@ -70,9 +101,8 @@ int dsp_init(byte *dsp_dev){
  }
 
  if (debug) printf ("debug: dsp: set speed returned '%d'\n",dsp_speed);
- if (dsp_speed != 44100){
-  printf ("FATAL: your dsp doesnt support 44100Hz.\n");
-  exit(1);
+ if (debug && (dsp_speed != samplerate)){
+  printf ("debug: dsp: wav samplerate and dsp samplerate differs, will sound funny\n");
  }
 
  return(dsp_handle);
