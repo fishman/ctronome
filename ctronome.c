@@ -30,7 +30,6 @@ int main(int argc,char *argv[]){
 
  /* create an endless/pcount times loop */
  while(pcount > 0){
-
   if (is_program){
    next_program(program);
   }
@@ -41,6 +40,10 @@ int main(int argc,char *argv[]){
    /* lets calculate the appropriate pattern length for our bpm and bpt */
    bpm_base_length = dsp_rate * dsp_depth * (dsp_channels + 1) * 60 / bpm[0];
    dsp_pattern_length = bpm_base_length * bpm[1] / bpt[1];
+
+   while(i3 = dsp_pattern_length % (dsp_depth * (dsp_channels + 1))){
+    dsp_pattern_length++;
+   }
   
    for (c4 = 0;c4 < count;c4++){
     dsp_write(dsp_device,wav1,dsp_pattern_length);

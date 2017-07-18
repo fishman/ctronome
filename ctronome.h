@@ -1,6 +1,6 @@
 #include <linux/soundcard.h>
 #define MYNAME "ctronome"
-#define VERSION "0.2"
+#define VERSION "0.3"
 #define CREDITS "homepage: http://ctronome.kign.org/\n"
 
 /* set up these three variables to your system */
